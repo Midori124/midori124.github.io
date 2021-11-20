@@ -87,12 +87,16 @@ button:hover {
 
 /* Choice Buttons style */
 [data-component="choice-container"] button {
-
+  background-color: #4482f3;
+  min-width: 150px;
+  font-size: 25px;
 }
 
 /* Choice Button Style on Hover */
 [data-component="choice-container"] button:hover {
-
+	background-color: #003ba8;
+  min-width: 150px;
+  font-size: 25px;
 }
 
 /* Text Box styling */

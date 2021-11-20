@@ -3,11 +3,11 @@
 // Define the messages used in the game.
 monogatari.action ('message').messages ({
 	'Help': {
-		title: 'Help',
-		subtitle: 'Some useful Links',
+		title: 'Gửi boom cho biên kịch Super Rác #j4f',
+		subtitle: 'Trước khi tạm biệt, hãy cùng click vào button bên dưới để góp phần ship boom mắm tôm đến nhà biên kịch SR.',
 		body: `
-			<p><a href='https://developers.monogatari.io/documentation/'>Documentation</a> - Everything you need to know.</p>
-			<p><a href='https://monogatari.io/demo/'>Demo</a> - A simple Demo.</p>
+			<p><a href='https://developers.monogatari.io/documentation/'>Documentation</a></p>
+			<p><a href='https://monogatari.io/demo/'>Demo</a></p>
 		`
 	}
 });
@@ -44,7 +44,9 @@ monogatari.assets ('gallery', {
 
 // Define the music used in the game.
 monogatari.assets ('music', {
-
+	'knock': 'knock.mp3',
+	'tvnoise': 'tvnoise.mp3',
+	'suspense': 'suspense.mp3',
 });
 
 // Define the voice files used in the game.
@@ -70,16 +72,36 @@ monogatari.assets ('images', {
 // Define the backgrounds for each scene.
 monogatari.assets ('scenes', {
 	'anh1': 'anh1.jpg',
-  'anh2': 'anh2.jpg'
+  'sora': 'sora.jpg',
+	'yuu1': 'anh4.png',
+	'room': 'anh5.png',
+	'soraroom': 'anh6.png',
+	'door': 'door.jpg',
+	'tv': 'tv.jpg',
 });
 
 
 // Define the Characters
 monogatari.characters ({
-	'y': {
+	'h': {
 		name: 'Hien',
-		color: '#5bcaff'
+		color: '#ff006a'
+	},
+	's': {
+		name: 'Sora',
+		color: '#0254ec'
+	},
+	'y': {
+		name: 'Yuu',
+		color: '#ff0000'
+	},
+	n : {
+	},
+	ptv : {
+		name: "Phát thanh viên",
+		color: '#ffffff'
 	}
+
 });
 
 monogatari.script ({
@@ -111,16 +133,16 @@ monogatari.script ({
 				'Warning': 'Nhập tên cơ mà!'
 			}
 		},
-		'y Chào {{player.name}} Cảm ơn bạn đã đến với SoraYuu!',
+		'h Chào mừng {{player.name}} đến với SoraYuu world!',
 		{
 			'Choice': {
-				'Dialog': 'y Bạn đã sẵn sàng chưa?',
+				'Dialog': 'h Bạn đã sẵn sàng khám phá chưa?',
 				'Yes': {
-					'Text': 'Yes',
+					'Text': 'Let\'s gooo!',
 					'Do': 'jump Yes'
 				},
 				'No': {
-					'Text': 'No',
+					'Text': 'Khoan, dừng khoảng chừng là 2s',
 					'Do': 'jump No'
 				}
 			}
@@ -128,41 +150,72 @@ monogatari.script ({
 	],
 
 	'Yes': [
-		'y Câu chuyện bắt đầu.',
-		'show scene anh2',
-		'y Miyamura Sora là một nhân viên mẫn cán đang làm việc tại bộ phận Công nghệ thuộc công ty sách điện tử Three Start Books.',
-		'y Một ngày nọ, khi về đến nhà trong một ngày làm việc vất vả, anh bỗng thấy một chàng trai đang ngủ gật trước cửa nhà mình.',
-    'show scene anh3',
-		'y Cậu ta vội vã tỉnh giấc',
-		'y "Xin chào. Em là Haruno Yuu, nhân viên mới bộ phận Biên tập của Three Star Books."',
-		'y "Em có thể vào trong không ạ?"',
+		'h Câu chuyện bắt đầu.',
+		'show scene sora',
+		// 'n Miyamura Sora, một nhân viên phòng Công nghệ công ty Three Start Books.',
+		// 'n Một ngày nọ, khi trở về nhà trong một ngày làm việc vất vả, anh bỗng thấy một chàng trai đang ngồi trước cửa nhà mình.',
+    // 'show scene yuu1',
+	  // 's Ai đây? Sao cậu ta lại ở đây giờ này? Trước cửa nhà anh? ',
+		// 'n Sora còn kịp định thần, cậu trai đã lên tiếng trước... ',
+		// 'y "Sao anh về muộn thế..."',
+		// 'n Cùng với vẻ mặt có chút giận dỗi.',
+		// 'n Sora có chút ngỡ ngàng.',
+		// 'n Cái thái độ này là sao? Mình quen cậu ta à?',
+		// 'n Mình thậm chí còn chưa gặp cậu ta bao giờ mà?',
+		// 'n Sora còn chưa kịp bình tâm, câu trai đã lại một lần nữa lên tiếng',
+		'y "Sao anh còn đứng như trời trồng ở đó làm gì, mau mở cửa cho em vào với, lạnh chết đi được.',
 		{
 			'Choice': {
-				'Dialog': 'y Mở cửa cho Yuu vào không?',
-				'Yes': {
-					'Text': 'Yes',
-					'Do': 'jump Yes'
+				'Dialog': '',
+				'Open': {
+					'Text': 'Mở cửa cho cậu ấy vào',
+					'Do': 'jump Open'
 				},
-				'No': {
-					'Text': 'No',
-					'Do': 'jump No'
+				'Close': {
+					'Text': 'Không cho cậu ta vào',
+					'Do': 'jump Close'
 				}
 			},
-		'Yes': [
-
-		  ],
 		},
 		'end'
 	],
 
 	'No': [
-
-		'y You can do it now.',
-
+		'y Hẹn gặp lại khi bạn sẵn sàng!',
 		'show message Help',
-
-		'y Go ahead and create an amazing Game!',
-		'y I can’t wait to see what story you’ll tell!',
 		'end'
-	]
+	],
+
+	'Open': [
+		'show scene room',
+		'n Cả hai cũng bước vào nhà.',
+
+	],
+
+	'Close': [
+		'show scene soraroom',
+		'n Sora mở cửa, nhanh chóng bước vào rồi ngay lập tức đóng sầm cửa lại.',
+		's "Chắc lại bọn lừa đảo thôi."',
+		'show scene door',
+		'play music knock',
+		'n Tuy vậy, cậu trai ngoài kia hình như chưa có ý định từ bỏ.',
+		'y "Này này, anh làm cái trò gì vậy?"',
+		'play music knock',
+		'n Cậu ta không ngừng gõ cửa',
+		'y "Mở cửa ra cho em!"',
+		'show scene #fffff with fadeIn',
+		'n Thời gian dần trôi qua.',
+		'play music tvnoise',
+		'show scene tv',
+		'ptv "Vào lúc 9h tối ngày xx/xx/xxxx, tại khu nhà xx phường xx thành phố xxx...',
+		'ptv "Đã phát hiện một thi thể nam giới',
+		'ptv "Người đàn ông đó không phải chủ căn hộ. Có vẻ như đã vài ngày trôi qua sau cái chết của anh ta."',
+		'ptv "Nguyên nhân tử vong bước đầu được xác định là do tự tử."',
+		'play music suspense',
+		'show scene #fffff with fadeIn',
+		'show scene #fffff with fadeIn',
+		'n ENDING 6 "CẬU TA LÀ AI?" (Bad ending)',
+		'n Thực ra Yuu là một sinh viên nghèo. Do không chịu được áp lực cuộc sống, cậu ấy đã tự kết liễu đời mình',
+		'end'
+	],
 });
