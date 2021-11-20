@@ -147,11 +147,11 @@ monogatari.script ({
 					'Text': 'No',
 					'Do': 'jump No'
 				}
-			}
-		},
+			},
 		'Yes': [
 
-		],
+		  ],
+		},
 		'end'
 	],
 
