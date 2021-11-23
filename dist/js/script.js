@@ -2,7 +2,8 @@
 
 monogatari.component ('main-screen').template (() => {
 	return `
-			<h1>SoraYuu</h1>
+			<h1>Boku no koibito</h1>
+			<img src="https://wx3.sinaimg.cn/mw2000/66fdc00cgy1gwmuot1dy4j233d2askjl.jpg" class="img">
 	`;
 });
 
@@ -28,7 +29,7 @@ monogatari.action ('message').messages ({
 monogatari.action ('notification').notifications ({
 	'Welcome': {
 		title: 'Xin chào!',
-		body: 'Đây là SoraYuu world',
+		body: 'Đây là Boku no koibito',
 		icon: ''
 	}
 });
@@ -480,15 +481,16 @@ monogatari.assets ('music', {
 	'tvnoise': 'tvnoise.mp3',
 	'suspense': 'suspense.mp3',
 	'theme': 'theme.mp3',
+	'cmtheme': 'CMtheme.mp3',
 	'cook': 'cook.mp3',
 	'chopping': 'chopping.mp3',
 	'putplate': 'putplate.mp3',
-	'life': 'life.mp3',
 	'ending1': 'ending1.mp3',
-	'ending2': 'ending2.mp3',
 	'ending3': 'ending3.mp3',
 	'ending4': 'ending4.mp3',
 	'ending5': 'ending5.mp3',
+	'ending21': 'ending21.mp3',
+	'ending22': 'ending21.mp3',
 	'ending6': 'ending6.mp3',
 	'mysterious': 'mysterious.mp3',
 });
@@ -521,7 +523,6 @@ monogatari.assets ('scenes', {
 	'anh1': 'anh1.jpg',
   'sora': 'sora.jpg',
 	'firstmeet': 'anh4.png',
-	'yuu1': 'yuu1.png',
 	'room': 'yuu_room.png',
 	'soralook': 'soralook.png',
 	'sit': 'sit.png',
@@ -596,35 +597,35 @@ monogatari.characters ({
 monogatari.script ({
 	// The game starts here.
 	'Start': [
-		// 'play music theme',
+		// 'play music cmtheme',
 		// 'show canvas stars background with fadeIn',
 		'show particles fireflies with fadeIn',
-		// 'show notification Welcome',
-		// {
-		// 	'Input': {
-		// 		'Text': 'Cho mình biết tên bạn nhé?',
-		// 		'Validation': function (input) {
-		// 			return input.trim ().length > 0;
-		// 		},
-		// 		'Save': function (input) {
-		// 			this.storage ({
-		// 				player: {
-		// 					name: input
-		// 				}
-		// 			});
-		// 			return true;
-		// 		},
-		// 		'Revert': function () {
-		// 			this.storage ({
-		// 				player: {
-		// 					name: ''
-		// 				}
-		// 			});
-		// 		},
-		// 		'Warning': 'Nhập tên cơ mà!'
-		// 	}
-		// },
-		'h Chào mừng {{player.name}} đến với SoraYuu world!',
+		'show notification Welcome',
+		{
+			'Input': {
+				'Text': 'Cho mình biết tên bạn nhé?',
+				'Validation': function (input) {
+					return input.trim ().length > 0;
+				},
+				'Save': function (input) {
+					this.storage ({
+						player: {
+							name: input
+						}
+					});
+					return true;
+				},
+				'Revert': function () {
+					this.storage ({
+						player: {
+							name: ''
+						}
+					});
+				},
+				'Warning': 'Nhập tên cơ mà!'
+			}
+		},
+		'h Chào mừng {{player.name}} đến với "Boku no koibito"!',
 		{
 			'Choice': {
 				'Dialog': 'h Bạn đã sẵn sàng khám phá chưa?',
@@ -642,32 +643,44 @@ monogatari.script ({
 
 	'Yes': [
 		'show scene #fffff with fadeIn',
-		'h Câu chuyện bắt đầu.',
+		'h Vậy thì bắt đầu.',
+		// 'play music cmtheme',
 		'hide particles',
 		'play music theme',
 		'show scene hourse0 with fadeIn',
+		// 'Người đàn ông nặng nề rảo bước trên con đường về nhà không một bóng người.',
+		// 'Anh đang mải suy nghĩ về sự việc kỳ lạ hồi chiều.',
+		// 'Khi đứng đợi thang máy công ty...',
+		// 'Anh vô tình thấy một cậu trai xảy chân té ngã',
+		// 'Anh vội vàng đến gần, đỡ cậu dậy và hỏi cậu có làm sao không...',
+		// 'Cậu ta mở to mắt nhìn anh, không nói gì mà chạy vụt đi.',
+		// 'Anh cảm thấy thật kỳ lạ, một câu cảm ơn khó đến thế sao?',
+		// 'Thẻ kia chẳng phải là thẻ thực tập sinh à?',
+		// 'Sinh viên dạo này đều vô lễ thế hả?',
+		// '...',
+		// 'Ngày qua ngày trôi đi.',
 		'Mùa thu sắp qua đi. Tiết trời bắt đầu se lạnh.',
-		'show scene hourse0',
-		'Người đàn ông rảo bước trên con đường về nhà không một bóng người.',
-		'show scene #000 with fadeIn',
-		'Khi về đến nhà...',
+		'Người đàn ông nặng nề cất bước trên con đường về nhà như bao ngày khác.',
+		'Nơi này rất an toàn và thoải mái...',
+		'Chỉ là dạo gần đây, hình như có ai đó hay đi quanh quẩn gần nhà anh.',
+		'Nhưng anh cũng không quá suy nghĩ về chuyện đó.',
 		'show scene hourse with fadeIn',
+		'Về đến nhà...',
 		'Người đàn ông ngạc nhiên khi thấy một chàng trai đứng trước cửa nhà mình.',
+		'Người này là ai?',
+		'Sao cậu ấy lại ở đây giờ này?',
 		'show scene firstmeet with fadeIn',
-		'Vừa nhìn thấy anh, cậu trai lập tức lên tiếng... ',
-		// 'show scene yuu1 with fadeIn',
+		'Không đợi anh phải ứng, cậu ấy lập tức lên tiếng... ',
 		'y "Sao anh về muộn thế..."',
-		// 'Vẻ mặt có chút giận dỗi...',
+		'Vẻ mặt có chút giận dỗi...',
 		'Nhưng giọng nói lại vô cùng dịu dàng...',
-		// 'Anh có chút ngỡ ngàng.',
-		// 'Chuyện gì đang xảy ra vậy? Cậu ta là ai?',
-		// 'Người đàn ông còn chưa kịp bình tâm, câu trai đã lại một lần nữa lên tiếng.',
+		'Người đàn ông còn chưa kịp hiểu chuyện gì đang xảy ra, cậu trai đã lại một lần nữa lên tiếng.',
 		'y "Sao anh còn đứng như trời trồng ở đó làm gì."',
 		'y "Mau mở cửa cho em vào với, lạnh chết đi được."',
 		'stop music theme',
 		{
 			'Choice': {
-				'Dialog': '',
+				'Dialog': 'Nhớ bấm Save ở cuối màn hình nha!',
 				'Open': {
 					'Text': 'Mở cửa cho cậu ấy vào',
 					'Do': 'jump Open'
@@ -703,11 +716,11 @@ monogatari.script ({
 		'y "Anh lại làm hộ phần người khác đúng không!"',
 		'y "Anh thật là... Lúc nào cũng tốt bụng như thế."',
 		'stop music cook',
-		'show scene #fffff with fadeIn',
+		// 'show scene #fffff with fadeIn',
 		'Người đàn ông cảm thấy bối rối.',
 		'Một cậu thanh niên lạ mặt bước vào nhà và nấu ăn cho anh.',
 		'Nghĩ thế nào thì chuyện này cũng không hề bình thường.',
-		'show scene soralook with fadeIn',
+		// 'show scene soralook with fadeIn',
 		'Nhưng không hiểu sao...',
 		'Trái tim anh cảm thấy bình yên đến lạ.',
 		'Một bầu không khí ấm áp bao trùm căn phòng.',
@@ -764,14 +777,11 @@ monogatari.script ({
 		'y "Sora-kun đáng ghét thật đó!!!"',
 		'y "Suốt ngày chỉ biết trêu em thôi!"',
 		'show scene #000000',
-		'Sau khi ăn xong, cậu ấy đứng dậy thu dọn bát đĩa và tiến về phía bồn rửa.',
+		'',
+		'Sau đó, cậu trai đứng dậy thu dọn bát đĩa và tiến về phía bồn rửa.',
 		'Xong xuôi đâu đấy, cậu thu dọn đồ và tiến về phía cửa.',
-		'show scene out with fadeIn',
 		'y "Muộn rồi, anh nghỉ ngơi đi."',
-		'show scene out',
 		'y "Hẹn mai gặp lại!"',
-		'show scene out',
-		// 'y "Còn chuyện kia... <span class="redText">Cô ấy</span> chắc sẽ tự quyết định."',
 		'Rồi cậu ấy vội vã ra về.',
 		'show scene #fffff',
 		'Anh đứng bần thần, rồi bất giác nhìn vào điện thoại.',
@@ -783,18 +793,14 @@ monogatari.script ({
 		'',
 		'Một ngày cứ thế trôi qua...',
 		'Một ngày mới lại đến...',
-		'show scene eat with fadeIn',
 		'Người đàn ông tiếp tục đi làm như bao ngày khác.',
-		'show scene eat',
 		'Nhưng trong đầu anh chỉ toàn hình bóng cậu trai hôm qua...',
-		'show scene eat',
 		'Anh không thể ngừng suy nghĩ về cậu trai kỳ lạ đó.',
-		'show scene eat',
 		's Có lẽ mình nên gọi điện cho Shoji chăng?',
 		'stop music theme',
 		{
 			'Choice': {
-				'Dialog': '',
+				'Dialog': 'Nhớ bấm Save ở cuối màn hình nha!',
 				'Talk': {
 					'Text': 'Gọi điện cho Shoji',
 					'Do': 'jump Talk'
@@ -809,7 +815,7 @@ monogatari.script ({
 	],
 
 	'Close': [
-		// Ending 6: Không mở cửa
+		// Ending 1: Không mở cửa
 		'show scene #fffff with fadeIn',
 		'Người đàn ông mở cửa, vội vã bước vào...',
 		'Rồi ngay lập tức đóng sầm cửa lại.',
@@ -856,13 +862,12 @@ monogatari.script ({
 		'<span class="redText">ENDING 1 (Bad ending) "CẬU TA LÀ AI?"</span>',
 		'Nếu bạn chưa hiểu chuyện gì đang xảy ra...',
 		'Hãy thay đổi lựa chọn để khám phá cốt truyện và các ending khác nhé.',
+		'À còn nữa,',
 		'Nếu bạn đang buồn vì gặp phải bad ending...',
 		'Thì hãy nhớ rằng Super Rich tập tiếp theo có lẽ sẽ còn tệ hơn cả cái kết này...',
 		'Chúc bạn luôn mạnh mẽ và giữ được cái đầu lạnh.',
 		'Để bảo toàn tính mạng cho cái laptop hay điện thoại của mình.',
-		'Cảm ơn vì đã chơi game :)',
-		'stop music ending5',
-		'',
+		'centered <span class="thank">Thanks for playing!',
 		'end'
 	],
 
@@ -880,7 +885,7 @@ monogatari.script ({
 		'j "Thế có chuyện gì mà gọi giờ này?"',
 		{
 			'Choice': {
-				'Dialog': '',
+				'Dialog': 'Nhớ bấm Save ở cuối màn hình nha!',
 				'Told': {
 					'Text': 'Kể cho Shoji chuyện hôm qua',
 					'Do': 'jump Told'
@@ -923,11 +928,10 @@ monogatari.script ({
 		'show scene yuusoft2',
 		'y "Biết làm thế nào được."',
 		'show scene #fffff with fadeIn',
-		'Người đàn ông <span class="redText">không muốn phải giả vờ đóng vai anh chàng Sora nào đó</span> nữa...',
-		'Anh quyết định thành thật thú nhận với cậu trai...',
-		'Rằng anh thực sự không phải là Sora.',
-		'Anh chưa từng nghe qua cái tên đó.',
-		'Và anh cũng không biết cậu là ai.',
+		'Hôm nay...',
+		'Anh quyết định thành thật với cậu trai...',
+		'Rằng anh thực sự không nhận ra cậu là ai.',
+		'Và anh cũng không phải là anh chàng Sora nào đó.',
 		'Cậu lặng lẽ mỉm cười, dường như không quá để ý đến những lời anh nói...',
 		'show scene yuusoft2 with fadeIn',
 		'y "Những chuyện không mấy tốt đẹp ngày xưa..."',
@@ -939,14 +943,18 @@ monogatari.script ({
 		'y "Một kẻ tự ty, lúc nào cũng tự đánh giá thấp bản thân."',
 		'show scene yuusoft2',
 		'y "Đã gây cho anh không ít phiền hà..."',
+		'y "..."',
 		'show scene yuusoft2',
-		'y "Nhưng em của ngày hôm nay đã thay đổi rồi."',
+		'y "Nhưng... Em của ngày hôm nay đã thay đổi rồi."',
 		'show scene yuusoft2',
 		'y "Có lẽ là nhờ Sora-kun chăng?"',
 		'show scene yuusoft2',
 		'y "Vì sao ấy hả?"',
 		'show scene yuusoft2',
-		'y "Hì. Em không nói đâu!"',
+		'y "Hì. Bí mật!"',
+		's ...',
+		'y ...',
+		'y "Sora-kun..."',
 		'show scene yuusoft2',
 		'y "Từ khi hẹn hò, tụi mình đã cùng đi du lịch rất nhiều nơi..."',
 		'show scene yuusoft2',
@@ -994,17 +1002,17 @@ monogatari.script ({
 		'y "Anh đã...?"',
 		'y "..."',
 		'y "Anh đã nhớ ra mọi chuyện?"',
-		'y "... nhỉ?"',
+		'y "... này?"',
 		'stop music theme',
 		{
 			'Choice': {
-				'Dialog': '',
+				'Dialog': 'Nhớ bấm Save ở cuối màn hình nha!',
 				'Remember': {
 					'Text': 'Đã nhớ ra tất cả',
 					'Do': 'jump Remember'
 				},
 				'NotYet': {
-					'Text': 'Vẫn chưa nhớ lại gì',
+					'Text': 'Chưa nhớ lại gì',
 					'Do': 'jump NotYet'
 				}
 			},
@@ -1012,41 +1020,41 @@ monogatari.script ({
 	],
 
 	'Remember' : [
-		// Ending 4: không gọi điện, có nhớ
+		// Ending 6: không gọi điện, có nhớ
 		// 'stop music life',
 		'show particles fireflies with fadeIn',
 		'show scene #fffff',
 		's2 Ký ức ùa về trong tâm trí tôi...',
 		's2 <span class="redText">Haruno Yuu, người yêu bé nhỏ của tôi...</span>',
-		's2 Lần đầu tiên gặp em ấy trước cửa thang máy công ty...',
+		's2 Lần đầu tiên gặp em ấy, tôi biết mình đã yêu em ấy mất rồi...',
 		's2 Em ấy ở đó, dịu dàng như ánh nắng xuân...',
 		's2 Sưởi ấm tâm hồn lạnh lẽo của tôi...',
 		's2 Ngày tôi lấy hết dũng khí tỏ tình...',
-		's2 Ngày hai đứa dọn về sống chung trong căn hộ này...',
+		's2 Ngày hai đứa dọn về sống chung...',
 		's2 Những tháng ngày tươi đẹp đó...',
-		'play music ending4',
+		'play music ending6',
 		's2 <span class="redText">Và cả vụ tai nạn đó...</span>',
 		's2 Tôi đã nhớ lại tất cả...',
 		's2 Tất cả...',
 		'hide particles',
 		'show particles fireflies with fadeIn',
-		'show scene yuucry4 with fadeIn',
+		'show scene yuusoft2 with fadeIn',
 		'y2 "Em đã ngạc nhiên lắm đó..."',
-		'show scene yuucry4',
+		'show scene yuusoft2',
 		'y2 "Dẫu biết rằng anh không còn tồn tại trên cõi gian này..."',
-		'show scene yuucry4',
+		'show scene yuusoft2',
 		'y2 "Em biết bản thân mình thật ngốc nghếch..."',
-		'show scene yuucry4',
+		'show scene yuusoft2',
 		'y2 "Ngày ngày đứng đợi trước căn hộ chúng mình từng chung sống..."',
-		'show scene yuucry4',
+		'show scene yuusoft2',
 		'y2 "Hi vọng ngày nào đó sẽ gặp lại anh nơi đây..."',
-		'show scene yuucry4',
+		'show scene yuusoft2',
 		'y2 "Và rồi anh đã thực sự quay về..."',
-		'show scene yuucry4',
+		'show scene yuusoft2',
 		'y2 "Nhưng đã quên đi tất cả..."',
-		'show scene yuucry4',
+		'show scene yuusoft2',
 		'y2 "Quên em... Quên cả bản thân mình..."',
-		'show scene yuucry4',
+		'show scene yuusoft2',
 		'show particles fireflies with fadeIn',
 		'show scene #fffff', 
 		'y2 "A..."',
@@ -1126,16 +1134,16 @@ monogatari.script ({
 		'show scene yuusoft2',
 		'y "Em hiểu rồi..."',
 		'show scene yuusoft2',
-		'y "Cũng chẳng còn cách nào khác nhỉ..."',
-		'show scene yuusoft2',
+		'y "Cũng chẳng còn cách nào khác nhỉ... Chuyện mất trí nhớ..."',
+		'show scene yuusad2',
 		'Cậu trai mỉm cười trong nước mắt...',
-		'show scene yuusoft2',
+		'show scene yuusad2',
 		'Nhìn vẻ mặt đượm buồn của cậu ấy...',
-		'show scene yuusoft2',
+		'show scene yuusad2',
 		'Trái tim người đàn ông như quặn lại...',
-		'show scene yuusoft2',
+		'show scene yuusad2',
 		'y "Không sao đâu..."',
-		'show scene yuusoft2',
+		'show scene yuusad2',
 		'y "Không cần phải xin lỗi em đâu..."',
 		'show scene yuusoft2',
 		'y "Em cảm thấy rất vui."',
@@ -1143,7 +1151,7 @@ monogatari.script ({
 		'y "Từ bây giờ..."',
 		'show scene yuusoft2',
 		'y "Ngày nào mình cũng sẽ gặp nhau anh nhé?"',
-		'show scene yuusoft2',
+		'show scene yuusoft2 ',
 		'y "Chúng ta sẽ <span class="redText">mãi mãi bên nhau dù có thế nào</span>."',
 		'stop music theme',
 		'show scene #fffff with fadeIn',
@@ -1151,7 +1159,9 @@ monogatari.script ({
 		'Thế nhưng ngày hôm sau, khi anh trở về nhà...',
 		'Đã không còn hình bóng cậu trai đứng chờ anh mỗi ngày.',
 		'Và những ngày sau đó cũng vậy.',
-		'Cậu trai cứ như thể đã biến mất khỏi thế gian này.',
+		'Anh hỏi thăm bộ phận nhân sự ở công ty...',
+		'Thì biết rằng cậu ấy đã xin nghỉ việc rồi.',
+		'Cứ như thể cậu đã hoàn toàn biến mất khỏi thế gian này.',
 		'show scene hourse0 with fadeIn',
 		'Thời gian cứ thế trôi đi.',
 		'show scene hourse0',
@@ -1163,7 +1173,6 @@ monogatari.script ({
 		'show scene #fffff',
 		'Rồi một ngày nọ...',
 		'play music ending5',
-		'',
 		'play music tvnoise',
 		'show scene tv with fadeIn',
 		'ptv "Sau đây là bản tin tiếp theo."',
@@ -1174,7 +1183,6 @@ monogatari.script ({
 		'ptv "Có vẻ như đã vài ngày trôi qua sau cái chết của họ."',
 		'ptv "Nguyên nhân tử vong bước đầu được xác định là do <span class="redText">tự tử..."</span>',
 		'show scene #fffff with fadeIn',
-		'',
 		'<span class="redText">ENDING 5 "MÃI MÃI BÊN NHAU DÙ CÓ THẾ NÀO!"</span>',
 		'centered <span class="thank">Thanks for playing!',
 		'end'
@@ -1194,7 +1202,7 @@ monogatari.script ({
 		'j "Gì cơ?"',
 		'j "Không có bồ á?"',
 		'j "Ông bị làm sao đấy?"',
-		'j <span class="redText">"Dạo trước chả khoe mẽ với bọn này về em bồ đáng yêu mới tán được còn gì?"</span>',
+		'j <span class="redText">"Dạo trước chả khoe với bọn này mới tán được em bồ đáng yêu cùng công ty còn gì?"</span>',
 		'j <span class="redText">"Còn biết nấu mấy món ông thích nữa."</span>',
 		'j <span class="redText">"Suốt ngày "Tôi hạnh phúc lắm", "Tôi vui chết đi được", nhức hết cả đầu."</span>',
 		'j <span class="redText">"Tính khoe cơm chó thì nói nhanh đi."</span>',
@@ -1308,13 +1316,13 @@ monogatari.script ({
 		'y2 "Anh đã nhớ ra chuyện gì rồi?"',
 		{
 			'Choice': {
-				'Dialog': '',
+				'Dialog': 'Nhớ bấm Save ở cuối màn hình nha!',
 				'ScaryRemember': {
 					'Text': 'Đã nhớ ra tất cả',
 					'Do': 'jump ScaryRemember'
 				},
 				'ScaryNotYet': {
-					'Text': 'Vẫn chưa nhớ lại gì',
+					'Text': 'Chưa nhớ lại gì',
 					'Do': 'jump ScaryNotYet'
 				}
 			},
@@ -1323,7 +1331,7 @@ monogatari.script ({
 
 	'ScaryRemember' : [
 		// Ending: Gọi điện, có kể, có nhớ
-		'play music ending6',
+		'play music ending21',
 		'show scene #fffff',
 		'"Vậy là..."',
 		'"Anh nhớ lại tất cả rồi phải không?"',
@@ -1335,15 +1343,15 @@ monogatari.script ({
 		'<i>Cậu trai đang ngồi trước mặt tôi...</i>',
 		'<i>Thực ra...',
 		'<i>Một năm trước...',
-		'<i>Lần đầu tiên tôi gặp em ấy...',
-		'<i>Là khi chúng tôi cùng nhau đứng đợi thang máy ở công ty tôi...',
+		'<i>Tôi tình cờ gặp em ấy...',
+		'<i>Trên một con đường gần công ty...',
 		'<i>Tôi đã yêu em ấy từ cái nhìn đầu tiên...',
 		'<i>Vẻ ngoài của em ấy chính là <span class="redText">hình mẫu lý tưởng mà tôi đang kiếm tìm.</span>',
 		'<i>Và tôi muốn <span class="redText">sở hữu em ấy bằng mọi giá...</span>',
 		'<i>Tôi đã dò hỏi tất cả mọi thông tin của em ấy...',
 		'<i>Tên tuổi, quê quán, địa chỉ...',
 		'<i>A...',
-		'<i>Thì ra em ấy là một thực tập sinh mới vào công ty tôi...',
+		'<i>Thì ra em ấy là một sinh viên...',
 		'<i>Haruno Yuu...',
 		'<i>Một cái tên thật đẹp...',
 		'<i>Dịu dàng như ánh nắng xuân...',
@@ -1386,10 +1394,31 @@ monogatari.script ({
 	],
 
 	'ScaryNotYet' : [
+		'play music ending21',
 		'show scene #fffff',
-		'"Vậy hả..."',
-		'...',
-		'"Anh nhớ lại tất cả rồi à..."',
+		'y <span class="redText">"Có thật là anh chưa nhớ lại gì không?..."',
+		'y <span class="redText">...',
+		'y <span class="redText">"Vậy thì để tôi giúp anh nhé..."',
+		'y <span class="redText">"Bạn trai cũ của tôi..."',
+		'',
+		'show scene scary1 with fadeIn',
+		'y2 <span class="redText"><i>"Đau quá... Đau quá..."',
+		'y2 <span class="redText"><i>"Em xin lỗi... em xin lỗi..."',
+		'y2 <span class="redText"><i>"Em biết sai rồi, em không dám qua lại với cậu ta nữa đâu."',
+		'y2 <span class="redText"><i>"Em xin lỗi... em xin lỗi... em xin lỗi... em xin lỗi... em xin lỗi... em xin lỗi... em xin lỗi... em xin lỗi... "',
+	  
+		'show scene yuusmile with fadeIn',
+		'y2 <span class="redText">Cái gì?</span>',
+		'y2 <span class="redText">Anh muốn tôi... tha thứ cho anh hả?</span>',
+		'y2 <span class="redText">...</span>',
+		'show scene yuuhorror with fadeIn',
+		'',
+		'show scene horror with fadeIn',
+		'<span class="redText">TÔI TUYỆT ĐỐI KHÔNG THA CHO ANH ĐÂU!',
+		'show scene #fffff with fadeIn',
+		'<span class="redText">ENDING 2 TRẢ GIÁ',
+		'centered <span class="thank">Thanks for playing!',
+		'end'
 	],
 
 	'NotTold': [
@@ -1477,13 +1506,13 @@ monogatari.script ({
 		'stop music theme',
 		{
 			'Choice': {
-				'Dialog': '',
+				'Dialog': 'Nhớ bấm Save ở cuối màn hình nha!',
 				'Past': {
 					'Text': 'Đã nhớ ra tất cả',
 					'Do': 'jump Past'
 				},
 				'Fake': {
-					'Text': 'Vẫn chưa nhớ lại gì',
+					'Text': 'Chưa nhớ lại gì',
 					'Do': 'jump Fake'
 				}
 			},
@@ -1492,13 +1521,13 @@ monogatari.script ({
 
 	'Past' : [
 		// Ending 3: Gọi điện, không kể, có nhớ
-		'play music theme',
+		// 'play music theme',
 		'y "Không đùa chứ..."',
 		'y "Anh nhớ lại mọi chuyện rồi sao?"',
 		'show scene yuusoft2 with fadeIn',
 		'y "Cảm ơn anh."',
 		'y "Em hạnh phúc lắm."',
-		'stop music theme',
+		// 'stop music theme',
 		'show scene #fffff with fadeIn',
 		's Ngày hôm sau, cậu ấy cũng đứng chờ trước cửa nhà tôi.',
 		's Ngày hôm sau nữa, rồi ngày hôm sau nữa nữa...',
@@ -1507,86 +1536,137 @@ monogatari.script ({
 		's Cậu ấy kể cho tôi những chuyện ngày xưa...',
 		's Những ngày tươi sáng và tràn ngập niềm vui...',
 		's Thế nhưng...',
-		'play music ending6',
+		'play music ending21',
 		's <span class="redText">Cậu ấy lại chẳng bao giờ nhắc đến chuyện tương lai.',
 		's <span class="redText">Cậu ấy vẫn đang mắc kẹt trong quá khứ.',
 		's <span class="redText">Điều đó làm tôi cảm thấy vô cùng khó chịu.',
 		's <span class="redText">Tôi dần trở nên điên cuồng...',
-		's <span class="redText">Và không thể kiểm soát bản thân...',
+		's <span class="redText">Không thể kiểm soát bản thân...',
+		's <span class="redText">Và tôi đã lỡ...',
 		'<span class="redText">ENDING 3 SỐNG TRONG QUÁ KHỨ.',
+		'centered <span class="thank">Thanks for playing!',
+		'end'
 	],
 
 	'Fake' : [
 		// Ending 4: Gọi điện, không kể, không nhớ
+
+		'show scene #000 with fadeIn',
 		's <i>"Anh đã nhớ lại mọi chuyện rồi."',
-		's Nếu tôi trả lời như vậy, cậu ấy sẽ cảm thấy hạnh phúc nhỉ?',
-		's Ban đầu, chỉ là tôi không nỡ làm cậu ấy thất vọng.',
+		's Nếu tôi trả lời như vậy, chắc em ấy sẽ vui lắm nhỉ?',
+		's Ban đầu, chỉ là tôi không nỡ làm em ấy thất vọng.',
 		's Thế nhưng...',
-		'play music life',
 		's Sự dịu dàng của em ấy.',
 		's Nụ cười ấm áp của em ấy.',
 		's Không biết từ bao giờ...',
-		's Tôi đã quá ỷ lại vào cảm giác dễ chịu này rồi ...',
+		's Tôi đã quá ỷ lại vào cảm giác dễ chịu này rồi...',
 		's Dẫu cho sự dịu dàng ấy...',
 		's Không thực sự là dành cho tôi.',
-		's Mối quan hệ này rồi sẽ không thể kéo dài...',
-		's Tôi chỉ chắc chắn một điều...',
+		's Mối quan hệ này sẽ không thể kéo dài...',
+		's Tôi không biết có thể ở bên em ấy đến khi nào.',
+		's Khi mọi chuyện đổ bể...',
+		's Liệu em ấy có ghét bỏ tôi không?',
+		's Tôi cũng không biết nữa.',
+		's Tôi chỉ biết một điều...',
 		's Ngày mà tôi nhớ được mọi chuyện về em ấy...',
 		's Ngày đó sẽ không bao giờ đến.',
+		'play music ending4',
 		's Bởi vì...',
-		'show scene firstmeet with fadeIn',
 		's <span class="redText">Miyamura Sora trong câu chuyện của em ấy...',
 		's <span class="redText">Không phải là tôi...',
 		's Buổi tối hôm đó...',
-		's Một cậu trai lạ mặt đứng trước cửa nhà tôi...',
-		's Và nói rằng tôi là người yêu của mình...',
-		's Biết được rằng đó chỉ là một sự hiểu lầm...',
-		's Người bình thường hẳn sẽ giải thích rõ ràng rồi tống ra khỏi nhà rồi nhỉ.',
+		's Khi em ấy đứng trước cửa nhà tôi...',
+		's Và nói rằng tôi là người yêu của em ấy...',
+		's Tôi biết đó chỉ là một sự hiểu lầm...',
+		's Hẳn là tôi nên giải thích rõ ràng mọi chuyện rồi bảo em ấy về đi nhỉ.',
 		's Nhưng tôi đã không làm thế.',
 		's Tôi đã chấp nhận câu chuyện của em ấy...',
-		's Và quyết định đóng giả làm người em ấy muốn gặp.',
+		's <span class="redText">Và quyết định đóng giả làm người em ấy muốn gặp.',
 		's Tôi chỉ không thể bỏ mặc em ấy.',
-		's Ngày hôm đó, em ấy nhìn trống rỗng như một chiếc vỏ...',
-		's Chiếc vỏ ấy có thể tan vỡ bất cứ lúc nào...',
-		's Nếu tôi không giữ lại.',
+		's Ngày hôm đó, em ấy trống rỗng như một chiếc vỏ...',
+		's Có thể tan vỡ bất cứ lúc nào...',
+		's Chỉ là tôi...',
 		'show scene yuusoft2 with fadeIn',
-		'y2 "Anh nhận ra rồi à?"',
-		'y2 "Chuyện là như thế đó."',
-		'y2 "... Xin lỗi."',
-		'y2 "Cảm ơn anh vì đã chấp nhận một người ích kỷ như em."',
-		'y2 "Sora-kun đã từng sống trong căn hộ này."',
-		'y2 "Quãng thời gian quý báu cùng anh trải qua."',
-		'y2 "Em đã vô cùng hạnh phúc."',
-		'y2 "Thế nhưng..."',
-		'y2 "Một vụ tai nạn bất ngờ đã cướp đi mạng sống của anh ấy..."',
-		'y2 "Ngay trước mắt em..."',
-		'y2 "Mọi chuyện xảy ra quá bất ngờ, và em không thể chấp nhận sự thật."',
-		'y2 "Vì không thể nào quên được anh ấy."',
-		'y2 "Nên em đã quay lại nơi này..."',
-		'y2 "Và gặp anh."',
-		'y2 "Và coi anh, một người xa lạ, như người thay thế của anh ấy."',
-		'y2 "Nhưng em xin lỗi..."',
-		'y2 "Anh và Sora-kun là hai người hoàn toàn khác nhau."',
-		'y2 "..."',
-		'y2 "Việc coi người khác như người thay thế, từ đầu đã làm một sự ích kỷ rồi nhỉ."',
-		'y2 "..."',
-		'y2 "Cảm ơn anh."',
-		'y2 "Nhờ có anh mà em đã dám đối diện với sự thật."',
+		'y "Anh nhận ra rồi à?"',
+		'y "..."',
+		'show scene yuusad2 with fadeIn',
+		'y "Chuyện là như thế đó."',
+		'y "... Xin lỗi."',
+		'y "Cảm ơn anh vì đã chấp nhận một người ích kỷ như em."',
+		'y "Sora-kun... và em..."',
+		'y "Bọn em đã từng rất hạnh phúc."',
+		'y "Ngày em trúng tuyển vào công ty anh ấy làm việc."',
+		'y "Hai đứa đã hạnh phúc biết nhường nào."',
+		'y "Nhưng..."',
+		'y "Tháng ngày vui vẻ chẳng được bao lâu."',
+		'y "Một căn bệnh hiểm nghèo đã cướp đi sinh mạng của anh ấy..."',
+		'y "Ngay trước mắt em..."',
+		'y "Mọi việc diễn ra quá bất ngờ, khiến em không thể chấp nhận được sự thật."',
+		'y "Em quyết định xin nghỉ làm, rời khỏi nơi đây, rũ bỏ tất cả..."',
+		'y "Nhưng ngày hôm đó, ngày em vừa xin thôi việc..."',
+		'y "Em như người mất hồn bước ra khỏi công ty và xảy chân té ngã..."',
+		'y "Và anh bước đến."',
+		'y "Mang theo giọng nói dịu dàng, sự ân cần ấy..."',
+		'y "Tựa như Sora-kun..."',
+		'y "Em đã đi theo anh về tận nhà, mà không để anh biết."',
+		'y "Và theo dõi anh kể mỗi ngày như một kẻ biến thái..."',
+		'y "Càng theo dõi em càng nhận thấy..."',
+		'y "Anh thật sự rất giống Sora-kun..."',
+		'y "Vậy nên..."',
+		'y "Ngày hôm đó, em quyết định..."',
+		'y "Sẽ vờ anh là người thay thế của Sora-kun..."',
+		'show scene yuusoft2 with fadeIn',
+		'y "Nhưng... Em xin lỗi..."',
+		'y "Anh và Sora-kun là hai người hoàn toàn khác nhau nhỉ."',
+		'y "..."',
+		'y "Ngay từ đầu... Em đã thật ích kỷ..."',
+		'y "..."',
+		'y "Cảm ơn anh."',
+		'y "Nhờ có anh mà em đã có dũng khí đối diện với sự thật."',
+		'show particles snow with fadeIn',
 		'show scene #fffff with fadeIn',
 		's Rồi em ấy lặng lẽ bước ra khỏi căn phòng.',
 		's Tôi chỉ biết đứng nhìn hình bóng em ấy dần rời xa.',
-		's Tối hôm sau, trước cửa căn hộ nơi tôi đang sống...',
 		'show scene hourse2 with fadeIn',
-		's Đã không còn ai đó đứng chờ.',
-		's Thật vui vì em ấy đã dám chấp nhận sự thật và thay đổi.',
-		's Nhưng cảm xúc cô đơn trống rỗng này là sao nhỉ...',
-		
-		'show particles stars with fadeIn',
+		's Tối hôm sau, trước cửa căn hộ nơi tôi đang sống...',
+		's Đã không còn hình bóng ai đó đứng chờ.',
+		's Tôi vui vì em ấy đã dám chấp nhận sự thật và thay đổi.',
+		's Nhưng cảm giác cô đơn trống rỗng này là sao nhỉ...',
 		'show scene #fffff with fadeIn',
-		'centered <span class="redText">Tạm biệt em, "người yêu của tôi"...',
-		'centered Hãy sống thật hạnh phúc em nhé...',
-		'centered Hẹn gặp lại em. Một ngày nào đó.',
-
+		'centered <span class="sun">Tạm biệt em, "người yêu của tôi"...',
+		'centered <span class="sun">Hãy sống thật hạnh phúc em nhé...',
+		'centered <span class="sun">Hẹn gặp lại em. Một ngày nào đó.',
+		'stop music ending4',
+		'hide particles',
+		'',
+		'Nhiều năm trôi qua kể từ cuộc gặp gỡ lạ kỳ đó...',
+		's Tôi đã chuyển đến một thành phố khác để làm việc.',
+		's Công việc vô cùng bận rộn. Mãi mới có một ngày nghỉ dạo phố.',
+		's Khi bước qua ngã tư đông đúc, một bóng hình quen thuộc lướt qua tôi.',
+		's Tôi vội vàng gọi cậu ấy lại...',
+		'play music cmtheme',
+		'show scene meetagain with fadeIn',
+		'y "... Vâng?"',
+		's Em ấy quay đầu lại nhìn tôi, vô cùng bất ngờ.',
+		'y "Đã lâu không gặp... anh nhỉ?"',
+		's Vẻ mặt ngại ngùng của em ấy... Cứ như một người khác vậy...',
+		'y "Anh gọi em có chuyện gì vậy ạ?"',
+		'y "Bây giờ ấy ạ?"',
+		'y "Vâng, cũng được. Nhưng mà..."',
+		'y "Em vẫn chưa biết tên anh mà."',
+		's "A, thật xin lỗi... Tôi..."',
+		'y "Haha... Anh kỳ cục ghê..."',
+		'show particles fireflies with fadeIn',
+		'show scene #000 with fadeIn',
+		'centered <span class="sun">Nếu chúng ta đã có duyên gặp gỡ nhau...',
+		'centered <span class="sun">Nhất định chúng ta sẽ có tương lai cùng nhau...',
+		'centered <span class="sun">Cho dù đôi lúc sẽ phải nhìn lại quá khứ...',
+		'centered <span class="sun">Tôi vẫn muốn ở bên dõi theo em tiến về phía trước...',
+		'show scene meetagain with fadeIn',
+		's "Vậy thì... Tôi xin được phép bắt đầu lại..."',
+		's "Rất vui được làm quen với em."',
+		's <span class="sun"><i>Người yêu của tôi.</i>',
+		'centered <span class="redText">ENDING 4 Rất vui được làm quen với em, người yêu của tôi!',
 		'centered <span class="thank">Thanks for playing!',
 		'end'
 	],

@@ -11193,7 +11193,6 @@ text-box.rtl>[data-content=name] {
 text-box [data-content=text] {
   -ms-grid-row: 2;
   -ms-grid-column: 2;
-  margin-top: 30px;
   grid-area: text;
   display: flex;
   flex-direction: column;
