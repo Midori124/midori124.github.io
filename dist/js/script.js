@@ -3,7 +3,6 @@
 monogatari.component ('main-screen').template (() => {
 	return `
 			<h1>Boku no koibito</h1>
-			<img src="https://wx3.sinaimg.cn/mw2000/66fdc00cgy1gwmuot1dy4j233d2askjl.jpg" class="img">
 	`;
 });
 
