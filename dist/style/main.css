@@ -87,14 +87,14 @@ button:hover {
 
 /* Choice Buttons style */
 [data-component="choice-container"] button {
-  background-color: #4482f3;
+  background-color: #00bcd4;
   min-width: 150px;
   font-size: 25px;
 }
 
 /* Choice Button Style on Hover */
 [data-component="choice-container"] button:hover {
-	background-color: #003ba8;
+	background-color: #00e1ff;
   min-width: 150px;
   font-size: 25px;
 }
@@ -244,4 +244,20 @@ input[type=range]::-ms-fill-upper {
 
 .redText {
   color: rgb(255, 68, 68);
+}
+
+.img{
+	width: 100%;
+	max-width: 700px;
+	height: auto;
+	border: 2px solid black;
+}
+
+.thank {
+	font-size: 50px;
+	color: aliceblue;
+}
+
+.sun {
+	color: gold;
 }
